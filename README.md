@@ -48,12 +48,12 @@ There are several valid reasons for partitioning the provided input data and its
 * The input areal image and its labels image, with spatial resolution: ```5000x5000``` pixels, are too large to use. This is specially the case due to the stated restriction that the GPU used for training and prediction cannot process patches larger than ```512x512x3``` as the input at a time.
 * One may resize the input images into more practical size. However we should not expect to train our model reasonably well using a single image and its associated labels image.
 
-As illustrated in ```Figure 3```, the input image and its associated labels image are partitioned into a ```10x10``` grid of ```slightly-overlapping``` sub-images:
+As illustrated in ```Figure 3```, the input image and its associated labels image are partitioned into a ```20x20``` grid of ```slightly-overlapping``` sub-images:
 * The overlap between adjacent sub-images ensures more reliable detection results along their borders and reduces detections artifacts near to sub-images boundaries
 * As illustrated in ```Table 1```, the implemented image partitioning yields:
-  - 10x10 = 100 areal sub-images and associated labels sub-images
-  - Each sub-image has a spatial resolution: ```512x512 pixels```, which meets the indicated GPU limitations.
-  - The binary labels sub-images have spatial resolution: ```512x512 pixels```.
+  - 20x20 = 400 areal sub-images and associated labels sub-images
+  - Each sub-image has a spatial resolution: ```256x256 pixels```, which meets the indicated GPU limitations.
+  - The binary labels sub-images have spatial resolution: ```256x256 pixels```.
 
 <p align="center">
   <img src="./images/image_partition.jpg" width="400" />
@@ -70,13 +70,13 @@ As illustrated in ```Figure 3```, the input image and its associated labels imag
 
 | Partition Grid | Sub-Images Size (pixels) | Range of Sub-Images Overlap (pixels) |
 | :---:         |     :---:      |          :---: |
-| 10x10   | 512x512     | 6 (Interior) - 12 (Border)  |
+| 20x20   | 256x256     | 3 (Interior) - 6 (Border)  |
 
 </div>
 
 ## 4.2. Data Augmentation
 
-After partitioning the input image and its associated labels image, we obtain 100 sub-images of size ```512x512`` pixels, which can be used to train and validate the CNN model:
+After partitioning the input image and its associated labels image, we obtain 400 sub-images of size ```512x512`` pixels, which can be used to train and validate the CNN model:
 * The generated labelled data may not be sufficiently diverse and additional labelled data would benefit training the CNN model
 * We augmented the extracted 100 partitioned sub-images by applying the following geometrical transformations on them:
   - Horizontal flip
