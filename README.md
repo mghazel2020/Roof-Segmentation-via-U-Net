@@ -234,7 +234,7 @@ The performance evaluation of the trained model on the full input image is illus
 
 ## 5.1 Folder Structure
 
-The folder structure of the submitted software implmentations is as illustrated in ```Figure 10``:
+The folder structure of the submitted software implmentations is as illustrated in ```Figure 10```:
 * The ```code``` sub-folder contains the required files for training and deploying the CNN model:
   - ```utils.py```: Contains shared Python imports, global variables and utlity functions
   - ```train.py```: Script for training the model
