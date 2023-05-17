@@ -1,5 +1,5 @@
 """
-    Project: InVision AI - Machine Learning Exercise:
+    Project: Computer Vision Exercise:
 
         Objective: The this project, we implement an Deep Learning Pixel Classification Model to detect and segment the
         roof of buildings from areal imagery.
@@ -10,7 +10,7 @@
 
     Author: Mohsen Ghazel
 
-    Date: March 23rd, 2022
+    Date: May 17th, 2022
 
     Execution: >python train.py
 
@@ -19,7 +19,7 @@
         - Intermediate and final results, which are saved to train sub-folder of the output folder
         - The trained model saved to trained_model sub-folder of the output folder
 
-    Copyright: InVision.AI copyright 2023
+    Copyright: mghazel copyright 2023
 """
 
 
@@ -107,7 +107,7 @@ def main():
     # -------------------------------------------------------------------------------
     # Step 3: Build the the Image Segmentation Model:
     # -------------------------------------------------------------------------------
-    # 3.1: Define the Model Layers, as Specified by InVision.AI:
+    # 3.1: Define the Model Layers:
     # -------------------------------------------------------------------------------
     # You are asked to implement the following network:
     # 1. Input RGB Image ->
