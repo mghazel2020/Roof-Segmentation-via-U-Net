@@ -260,7 +260,7 @@ The folder structure of the submitted software implmentations is as illustrated 
 * The ```README.md``` file
  
 <p align="center">
-  <img src="./images/NEW_MyCV_Exervcise_Solution_Folder_Structure.jpg.jpg" width="500" />
+  <img src="./images/NEW_MyCV_Exercise_Solution_Folder_Structure.jpg" width="500" />
 </p>
 <p align="center">
 
