@@ -1,4 +1,4 @@
-# Roof Detection via U-Net Segmentation Model:
+# Roof-Top Detection via U-Net Segmentation Model:
 
 # 1. Objective
 
