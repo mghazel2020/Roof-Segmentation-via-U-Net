@@ -599,6 +599,9 @@ In view of the model performance assessment above, it appears that one of the ma
   - Thus, the model may benefit from collecting and annotating more diverse training data
   - Additional labelled data should especially contain more examples similar to the observed model false positive detections, including surfaces similar to roof tops, such as tops of large vehicles and metal structures, flat smooth or paved ground surfaces and terrains, etc. 
   - Adding a sufficient amount of such examples will likely help the model learn the subtle differences between actual roof tops and other similar structures and reduce its false detection rate. 
+  - Soem of teh small isolated small false alarams can be filtered-out via post-processing operations such as:
+    - Morphological operations
+    - Connected components analysis.
 
 
 ## 6.2.2 Hyper-Parameters Tuning & Data Augmentation
