@@ -131,17 +131,20 @@ I split the 400 partitioned sub-images and their associated labels sub-images in
 
 </div>
 
-## 4.4. Training the CNN Model
+## 4.4. Model: U-Net
 
-The trained fully CNN model proposed by InVision.AI has the architecture as illustrated in ```Figure 5```.
+The undertaken problem of roof-top detection and segmentation from areal imagery is a classifical image segmentation problem:
+
+* U-Net is well proven image segmentation deep learning model, which has been shown to perform well, especially in segmenting medical images as well as for other image segmentation applications.
+* The trained U-Net has the architecture as illustrated in ```Figure 5```.
   
 <p align="center">
-  <img src="./images/trained_model_architecture.jpg" width="400" />
+  <img src="./images/trained_UNET_model_architecture.jpg" width="500" />
 </p>
 <p align="center">
 
 <p align="center">
-  <em>Figure 5: The architecture of the trained fully CNN model, as proposed by InVision.AI.</em>
+  <em>Figure 13: The architecture of the trained U-Net model.</em>
 </p>
 
 We experimented with various model training hyper-parameters and the set values of selected key hyper-paramaters are illustrated in ```Table 3```.
@@ -165,8 +168,8 @@ We experimented with various model training hyper-parameters and the set values 
 ```Figure 6``` illustrates the variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images. We note that after 100 training epochs the model training appears to have converged, in spite of the expected but insignificant random variation of the performance from one epoch to another.  
 
 <p align="center">
-  <img src="./images/model_train_100_epochs_accuracy.jpg" width="800" />
-  <img src="./images/model_train_100_epochs_loss.jpg" width="800" />
+  <img src="./images/NEW_model_training_accuracy.jpg" width="800" />
+  <img src="./images/NEW_model_training_loss.jpg" width="800" />
 </p>
 <p align="center">
 
@@ -176,49 +179,36 @@ We experimented with various model training hyper-parameters and the set values 
 
 ## 4.5. Trained Model Performance Evaluation
 
-We evaluated the performance of the trained model on the training and validation data subsets, as illustrated in ```Figure 7``` and ```Figure 8```, respectively:
-* As mentioned above, this is not ideal, as the trained model should be evaluated on a test data subset, consisting of previously unseen labelled test data:
-  - However, due to the limited amount of labelled data, we only considered training and validation subsets
-  - In the proposed improvement section (Section 7), we shall propose to collect and annotate more diverse data in order to be able to perform a more comprehensive and unbiased performance evaluation of the trained model. 
+We evaluated the performance of the trained model on the test data subsets:
+* ```Figure 7```illustrates the normalized confusion matrix.
 
 <p align="center">
-  <img src="./images/normalized_confusion_matrix_train_subset.jpg" width="500" />
-  <img src="./images/classification_report_train_subset.jpg" width="500" />
+  <img src="./images/NEW_model-performance--cm-test-images.jpg" width="500" />
+  <img src="./images/NEW_classification-report-test-images.jpg" width="500" />
 </p>
 <p align="center">
 
 <p align="center">
-  <em>Figure 7: The normalized confusion matrix and the classification report using the training data subset.</em>
+  <em>Figure 7: The normalized confusion matrix and the classification report using the test data subset.</em>
 </p>
 
+```Figure 9``` illustrates randomly selected test sub-images and their corresponding labels and model predictions. 
 <p align="center">
-  <img src="./images/normalized_confusion_matrix_valid_subset.jpg" width="500" />
-  <img src="./images/classification_report_valid_subset.jpg" width="500" />
-</p>
-<p align="center">
-
-<p align="center">
-  <em>Figure 8: The normalized confusion matrix and the classification report using the validation data subset.</em>
-</p>
-
-```Figure 9``` illustrates randomly selected training and validation sub-images and their corresponding labels and model predictions. 
-<p align="center">
-  <img src="./images/model_preds_10_train_images.jpg" width="400" />
-  <img src="./images/model_preds_10_valid_images.jpg" width="400" />
+  <img src="./images/NEW_model-predictions-for-10-test-images.jpg" width="400" />
 </p>
 <p align="center">
 
 <p align="center">
-  <em>Figure 9: Randomly selected training and validation sub-images and their corresponding labels and model predictions.</em>
+  <em>Figure 9: Randomly selected test sub-images and their corresponding labels and model predictions.</em>
 </p>
 
 
-## 4.6. Generating Model Labels Predictions for the Original Input image
+## 4.6. Generating Model Labels Predictions for the Full Original Input image
 
 Finally, we merged the trained model predictions obtained from the partitioned sub-images together to generate the model labels predictions for the entire original input image (```image.tif```). ```Figure 10``` illustrates the generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).
 
 <p align="center">
-  <img src="./images/model_preds_full_input_image.jpg" width="400" />
+  <img src="./images/NEW_full-image-model-predictions.jpg" width="400" />
   <img src="./images/labels.jpg" width="400" />
 </p>
 <p align="center">
@@ -232,8 +222,8 @@ Finally, we merged the trained model predictions obtained from the partitioned s
 The performance evaluation of the trained model on the full input image is illustrated in ```Figure 11```. 
 
 <p align="center">
-  <img src="./images/normalized_confusion_matrix_full_input_image.jpg" width="500" />
-  <img src="./images/classification_report_full_input_image.jpg" width="500" />
+  <img src="./images/NEW_full-image--model-performance-evaluation--cm-normalized.jpg" width="500" />
+  <img src="./images/NEW_full-image--classification-report-test-images.jpg" width="500" />
 </p>
 <p align="center">
 
@@ -620,37 +610,7 @@ As mentioned previously, I experimented with tuning few key model training hyper
   - Applying a more comprehensive data augemntation of the annotated data, using ```TensorFlow ImageDataGenerator```, including:
     - Geometrical flipping, shifting and rotation transformations
     - Pixel-based transformations
-    - Such data augmentation should increase the volume and diversity of teh training data and imrove the model training, learning and generalization.  
-
-## 6.2.3 Exploring More Complex Models: U-Net
-
-The undertaken problem of roof-top detection and segmentation from areal imagery is a classifical image segmentation problem:
-* U-Net and its variations are well proven image segmentation deep learning models, which have been shown to perform well, especially in segmenting medical images as well as for other image segmentation applications. 
-* In the submitted Google Colab Notebook (```Section 5.1```), I experimented with implementing a U-Net model, with architecture as illustrated in ```Figure 13```.
-
-<p align="center">
-  <img src="./images/trained_UNET_model_architecture.jpg" width="500" />
-</p>
-<p align="center">
-
-<p align="center">
-  <em>Figure 13: The architecture of the trained U-Net model.</em>
-</p>
-
-The performance of the trained model U-Net model on the full input image is illustrated in ```Figure 14```:
-* We note that trained U-Net model performs significantly better than the implemented simpler CNN model, with performance illustrated in ```Figure 11```
-* However, it appears that the trained U-Net model is over-fitting as it is achieving exceptionally high precision and recall performance on the training data (full image)
-* This model should be re-trained and re-evaluated more comprehensively whenever more labelled data is collected to assess its practical performance and determine how well it performs on previously unseen data.
-
-<p align="center">
-  <img src="./images/unet_normalized_confusion_matrix_full_input_image.jpg" width="500" />
-  <img src="./images/unet_classification_report_full_input_image.jpg" width="500" />
-</p>
-<p align="center">
-
-<p align="center">
-  <em>Figure 14: The U-Net normalized confusion matrix and the classification report using the entire input image.</em>
-</p>
+    - Such data augmentation should increase the volume and diversity of teh training data and imrove the model training, learning and generalization. 
 
 ## 6.2.4 Proposed Improvements to the Implemented Code
 
