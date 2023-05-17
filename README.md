@@ -124,10 +124,10 @@ I split the 400 partitioned sub-images and their associated labels sub-images in
   <em>Table 2:  Splitting the data set into training and validation subsets.</em>
 </p>
 
-| | Training | Validation |
-| :---:         |     :---:      |          :---: |
-| Percentage  | 80     | 20  |
-| Number of Images  | 320    | 80  |
+| | Training | Validation | Test |
+| :---:         |     :---:      |          :---: |          :---: |
+| Percentage  | 80     | 10  | 10  |
+| Number of Images  | 1280    | 160 | 160  |
 
 </div>
 
