@@ -614,7 +614,7 @@ As mentioned previously, I experimented with tuning few key model training hyper
     - Pixel-based transformations
     - Such data augmentation should increase the volume and diversity of the training data and imrove the model training, learning and generalization. 
 
-## 5.2.4 Proposed Improvements to the Implemented Code
+## 5.2.3 Proposed Improvements to the Implemented Code
 
 For this task, I aimed to develop a efficient, modularized and well documented code. However, additional improvements can be made to further improve my implementations, including:
 
