@@ -76,14 +76,14 @@ As illustrated in ```Figure 2```, the input image and its associated labels imag
 
 ## 4.2. Data Augmentation
 
-After partitioning the input image and its associated labels image, we obtain 400 sub-images of size ```512x512`` pixels, which can be used to train and validate the CNN model:
+After partitioning the input image and its associated labels image, we obtain 1600 sub-images of size ```256x256`` pixels, which can be used to train and validate the CNN model:
 * The generated labelled data may not be sufficiently diverse and additional labelled data would benefit training the CNN model
 * We augmented the extracted 100 partitioned sub-images by applying the following geometrical transformations on them:
   - Horizontal flip
   - Vertical-flip
   - Both Horizontal and Vertical flips
 * This results in quadrupling the amount of labeled data:
-  - 400 sub-images  of size ```512x512``` pixels and their associated labels sub-images.
+  - 1600 sub-images  of size ```256x256``` pixels and their associated labels sub-images.
   
 * Note that we chose to physically augment the images and store them instead of just applying data augmentation using Python generators because we have insufficient data to work with. As such, we generated and stored additional labelled images to use for training, validating and evaluating the performance of the CNN model.
 * ```Figure 3``` illustrates a sample extracted areal sub-image, its associated labels sub-image and their corresponding generated augmentations.
@@ -213,7 +213,7 @@ Finally, we merged the trained model predictions obtained from the partitioned s
 <p align="center">
 
 <p align="center">
-  <em>Figure 8: The generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).</em>
+  <em>Figure 8: The generated model labels predictions for the entire input image and the ground truth labels image.</em>
 </p>
 
 ## 4.7. Evaluating the Trained Model Performance on the Full Input Image
