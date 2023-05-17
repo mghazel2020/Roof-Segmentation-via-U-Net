@@ -200,7 +200,7 @@ We evaluated the performance of the trained model on the test data subsets:
 <p align="center">
 
 <p align="center">
-  <em>Figure 7: Randomly selected test sub-images and their corresponding labels and model predictions.</em>
+  <em>Figure 7: Ten randomly selected test images and their corresponding labels and model predictions.</em>
 </p>
 
 ## 4.6. Generating Model Labels Predictions for the Full Original Input image
