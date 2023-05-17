@@ -8,7 +8,7 @@ The objective of this repository is to document my implementation of U-Net image
 
 ## 2.1 Input Data
 
-As illustrated in ```Figure 2```, the provided input data consists of:
+As illustrated in ```Figure 1```, the provided input data consists of:
 
 * An ```RGB``` areal image (```image.tif```) with special resolution: ```5000x5000``` pixels.
 * The associated roof-top labels ```Binary``` image (```labels.tif```), with the same size.
@@ -18,7 +18,7 @@ As illustrated in ```Figure 2```, the provided input data consists of:
   <img src="./images/labels.jpg" width="400" /> 
 </p>
 <p align="center">
-  <em>Figure 2: The input areal RGB image (image.tif) and its associated Binary labels image (labels.tif), with spatial resolution: 5000x5000 pixels.</em>
+  <em>Figure 1: The input areal RGB image (image.tif) and its associated Binary labels image (labels.tif), with spatial resolution: 5000x5000 pixels.</em>
 </p>
 
 ## 2.2 Objective
@@ -48,7 +48,7 @@ There are several valid reasons for partitioning the provided input data and its
 * The input areal image and its labels image, with spatial resolution: ```5000x5000``` pixels, are too large to use. This is specially the case due to the stated restriction that the GPU used for training and prediction cannot process patches larger than ```512x512x3``` as the input at a time.
 * One may resize the input images into more practical size. However we should not expect to train our model reasonably well using a single image and its associated labels image.
 
-As illustrated in ```Figure 3```, the input image and its associated labels image are partitioned into a ```20x20``` grid of ```slightly-overlapping``` sub-images:
+As illustrated in ```Figure 2```, the input image and its associated labels image are partitioned into a ```20x20``` grid of ```slightly-overlapping``` sub-images:
 * The overlap between adjacent sub-images ensures more reliable detection results along their borders and reduces detections artifacts near to sub-images boundaries
 * As illustrated in ```Table 1```, the implemented image partitioning yields:
   - 20x20 = 400 areal sub-images and associated labels sub-images
@@ -60,7 +60,7 @@ As illustrated in ```Figure 3```, the input image and its associated labels imag
   <img src="./images/labels_partition.jpg" width="400" /> 
 </p>
 <p align="center">
-  <em>Figure 3: The sizes of the image partition and resulting sub-images and their overlap.</em>
+  <em>Figure 2: The sizes of the image partition and resulting sub-images and their overlap.</em>
 </p>
 
 <div align="center">
@@ -86,7 +86,7 @@ After partitioning the input image and its associated labels image, we obtain 40
   - 400 sub-images  of size ```512x512``` pixels and their associated labels sub-images.
   
 * Note that we chose to physically augment the images and store them instead of just applying data augmentation using Python generators because we have insufficient data to work with. As such, we generated and stored additional labelled images to use for training, validating and evaluating the performance of the CNN model.
-* ```Figure 4``` illustrates a sample extracted areal sub-image, its associated labels sub-image and their corresponding generated augmentations.
+* ```Figure 3``` illustrates a sample extracted areal sub-image, its associated labels sub-image and their corresponding generated augmentations.
   
 <p align="center">
   <img src="./images/image_sub_img_0x3.jpg" width="200" />
@@ -103,7 +103,7 @@ After partitioning the input image and its associated labels image, we obtain 40
 <p align="center">
 
 <p align="center">
-  <em>Figure 4: A partition sub-image, its associated labels sub-image and their horizontal, vertical and horizonal and vertical flip transformations.</em>
+  <em>Figure 3: A partition sub-image, its associated labels sub-image and their horizontal, vertical and horizonal and vertical flip transformations.</em>
 </p>
 
 ## 4.3. Model Training & Validation Data Split
@@ -136,7 +136,7 @@ I split the 400 partitioned sub-images and their associated labels sub-images in
 The undertaken problem of roof-top detection and segmentation from areal imagery is a classifical image segmentation problem:
 
 * U-Net is well proven image segmentation deep learning model, which has been shown to perform well, especially in segmenting medical images as well as for other image segmentation applications.
-* The trained U-Net has the architecture as illustrated in ```Figure 5```.
+* The trained U-Net has the architecture as illustrated in ```Figure 4```.
   
 <p align="center">
   <img src="./images/trained_UNET_model_architecture.jpg" width="500" />
@@ -144,7 +144,7 @@ The undertaken problem of roof-top detection and segmentation from areal imagery
 <p align="center">
 
 <p align="center">
-  <em>Figure 13: The architecture of the trained U-Net model.</em>
+  <em>Figure 4: The architecture of the trained U-Net model.</em>
 </p>
 
 We experimented with various model training hyper-parameters and the set values of selected key hyper-paramaters are illustrated in ```Table 3```.
@@ -165,7 +165,7 @@ We experimented with various model training hyper-parameters and the set values 
 </div>
 
 
-```Figure 6``` illustrates the variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images. We note that after 100 training epochs the model training appears to have converged, in spite of the expected but insignificant random variation of the performance from one epoch to another.  
+```Figure 5``` illustrates the variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images. We note that after 100 training epochs the model training appears to have converged, in spite of the expected but insignificant random variation of the performance from one epoch to another.  
 
 <p align="center">
   <img src="./images/NEW_model_training_accuracy.jpg" width="800" />
@@ -174,13 +174,13 @@ We experimented with various model training hyper-parameters and the set values 
 <p align="center">
 
 <p align="center">
-  <em>Figure 6: The variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images.</em>
+  <em>Figure 5: The variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images.</em>
 </p>
 
 ## 4.5. Trained Model Performance Evaluation
 
 We evaluated the performance of the trained model on the test data subsets:
-* ```Figure 7```illustrates the normalized confusion matrix.
+* ```Figure 6```illustrates the normalized confusion matrix.
 
 <p align="center">
   <img src="./images/NEW_model-performance--cm-test-images.jpg" width="500" />
@@ -189,22 +189,22 @@ We evaluated the performance of the trained model on the test data subsets:
 <p align="center">
 
 <p align="center">
-  <em>Figure 7: The normalized confusion matrix and the classification report using the test data subset.</em>
+  <em>Figure 6: The normalized confusion matrix and the classification report using the test data subset.</em>
 </p>
 
-```Figure 9``` illustrates randomly selected test sub-images and their corresponding labels and model predictions. 
+```Figure 7``` illustrates randomly selected test sub-images and their corresponding labels and model predictions. 
 <p align="center">
   <img src="./images/NEW_model-predictions-for-10-test-images.jpg" width="400" />
 </p>
 <p align="center">
 
 <p align="center">
-  <em>Figure 9: Randomly selected test sub-images and their corresponding labels and model predictions.</em>
+  <em>Figure 7: Randomly selected test sub-images and their corresponding labels and model predictions.</em>
 </p>
 
 ## 4.6. Generating Model Labels Predictions for the Full Original Input image
 
-Finally, we merged the trained model predictions obtained from the partitioned sub-images together to generate the model labels predictions for the entire original input image (```image.tif```). ```Figure 10``` illustrates the generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).
+Finally, we merged the trained model predictions obtained from the partitioned sub-images together to generate the model labels predictions for the entire original input image (```image.tif```). ```Figure 8``` illustrates the generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).
 
 <p align="center">
   <img src="./images/NEW_full-image-model-predictions.jpg" width="400" />
@@ -213,12 +213,12 @@ Finally, we merged the trained model predictions obtained from the partitioned s
 <p align="center">
 
 <p align="center">
-  <em>Figure 10: The generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).</em>
+  <em>Figure 8: The generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).</em>
 </p>
 
 ## 4.7. Evaluating the Trained Model Performance on the Full Input Image
 
-The performance evaluation of the trained model on the full input image is illustrated in ```Figure 11```. 
+The performance evaluation of the trained model on the full input image is illustrated in ```Figure 9```. 
 
 <p align="center">
   <img src="./images/NEW_full-image--model-performance-evaluation--cm-normalized.jpg" width="500" />
@@ -227,14 +227,14 @@ The performance evaluation of the trained model on the full input image is illus
 <p align="center">
 
 <p align="center">
-  <em>Figure 11: The normalized confusion matrix and the classification report using the full input image.</em>
+  <em>Figure -: The normalized confusion matrix and the classification report using the full input image.</em>
 </p>
 
 # 5. Submitted Code
 
 ## 5.1 Folder Structure
 
-The folder structure of the submitted software implmentations is as illustrated in ```Figure 12```:
+The folder structure of the submitted software implmentations is as illustrated in ```Figure 10``:
 * The ```code``` sub-folder contains the required files for training and deploying the CNN model:
   - ```utils.py```: Contains shared Python imports, global variables and utlity functions
   - ```train.py```: Script for training the model
@@ -265,7 +265,7 @@ The folder structure of the submitted software implmentations is as illustrated 
 <p align="center">
 
 <p align="center">
-  <em>Figure 12: The folder structure of the submitted software implementations.</em>
+  <em>Figure 10: The folder structure of the submitted software implementations.</em>
 </p>
 
 ## 5.2 Requirements
