@@ -554,7 +554,7 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
 2. Create a ```code``` sub-folder and copy the ```CV_Exercise.ipynb``` to ```My Drive\temp\code```
 3. Create a sub-folder ```data``` and copy the input data ```image.tif``` and ```labels.tif``` to ```My Drive\temp\data```
 4. Create a sub-folder ```output``` so the output will be saved to ```My Drive\temp\output```
-5. Open ``CV_Exercise.ipynb``` using Google Colaborator
+5. Open ```CV_Exercise.ipynb``` using Google Colaborator
 6. Edit the ```DATA_PATH``` and ```OUTPUT_PATH``` to point to your ```data``` and ```output``` sub-folders described above
     ```
     #-------------------------------------------------------------------------------
