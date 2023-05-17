@@ -578,7 +578,7 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
   * Using different hyper-parameters.
 
 
-# 6. Trained Model Performance Assessment & Proposed Improvements
+# 6. Assessment & Proposed Improvements
 
 ## 6.1 Performance Assessment
 
