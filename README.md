@@ -554,7 +554,7 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
 2. Create a ```code``` sub-folder and copy the ```CV_Exercise.ipynb``` to ```My Drive\temp\code```
 3. Create a sub-folder ```data``` and copy the input data ```image.tif``` and ```labels.tif``` to ```My Drive\temp\data```
 4. Create a sub-folder ```output``` so the output will be saved to ```My Drive\temp\output```
-5. Open ``InVisionIA_ML_Exercise.ipynb``` using Google Colaborator
+5. Open ``CV_Exercise.ipynb``` using Google Colaborator
 6. Edit the ```DATA_PATH``` and ```OUTPUT_PATH``` to point to your ```data``` and ```output``` sub-folders described above
     ```
     #-------------------------------------------------------------------------------
@@ -563,7 +563,7 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
     # Set the data path: Relative to my Google Drive
     #-------------------------------------------------------------------------------
     # - contains the image.tiff and its binary mask: labels.tif
-    DATA_PATH = "/content/drive/MyDrive/Colab_Notebooks/InvisionAI/data/"
+    DATA_PATH = "/content/drive/MyDrive/001--JS-May-2023/BenchSci/Project/data/"
 
     #-------------------------------------------------------------------------------
     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EDIT OUTPUT_PATH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -571,11 +571,10 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
     # Set the output path: Relative to my Google Drive
     #-------------------------------------------------------------------------------
     # The output will be saved here
-    OUTPUT_PATH = '/content/drive/MyDrive/Colab_Notebooks/InvisionAI/output/'
+    OUTPUT_PATH = '/content/drive/MyDrive/001--JS-May-2023/BenchSci/Project/output/'
     ```
 7. Explore the Notebook and experiment with:
-  * Using different hyper-parameters
-  * Training and deploying a more complex U-NET model instead of the model proposed by InVision.AI.
+  * Using different hyper-parameters.
 
 
 # 6. Trained Model Performance Assessment & Proposed Improvements
@@ -609,7 +608,7 @@ As mentioned previously, I experimented with tuning few key model training hyper
   - Applying a more comprehensive data augemntation of the annotated data, using ```TensorFlow ImageDataGenerator```, including:
     - Geometrical flipping, shifting and rotation transformations
     - Pixel-based transformations
-    - Such data augmentation should increase the volume and diversity of teh training data and imrove the model training, learning and generalization. 
+    - Such data augmentation should increase the volume and diversity of the training data and imrove the model training, learning and generalization. 
 
 ## 6.2.4 Proposed Improvements to the Implemented Code
 
@@ -619,8 +618,7 @@ For this task, I aimed to develop a efficient, modularized and well documented c
   - This will make it easier to experiment with different parameters values without the need to edit the ```utils.py``` file. 
   - In our case, we first prototyped our solution using Google Colaboratory Jupyter Notebook, which allowed us to:
     - Make use of GPU processing in Google Colab
-    - Experiment with different combinations model hyper-parameters and select good defaut values
-    - Experiment with more complex model structures, such as U-Net. 
+    - Experiment with different combinations model hyper-parameters and select good defaut values.
   
 * Breakup some of the ultility functions into smaller functionalities in order to to reduce the complexity and improve readibility and usability
 
