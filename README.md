@@ -548,7 +548,7 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
 (base) C:\CV_Exercise_MGhazel_Solutions\output\inference>  
 ```
 
-## 5.4 Executing the Google Colab Notebook: ```CV_Exercise.ipynb```
+## 4.4 Executing the Google Colab Notebook: ```CV_Exercise.ipynb```
 
 * To execute the Google Colaboratory Notebook, please follow the following steps:
 1. Create a folder (ex. ```temp```) on your Google Drive (```My Drive```) 
