@@ -45,7 +45,8 @@ Next, we shall describe each of these steps in more details and illutrate sample
 ## 4.1. Image Partitioning
 
 There are several valid reasons for partitioning the provided input data and its associated labels image, including:
-* The input areal image and its labels image, with spatial resolution: ```5000x5000``` pixels, are too large to use. This is specially the case due to the stated restriction that the GPU used for training and prediction cannot process patches larger than ```512x512x3``` as the input at a time.
+* The input areal image and its labels image, with spatial resolution: ```5000x5000``` pixels, are too large to use. 
+* This is specially the case due to the stated restriction that the GPU used for training and prediction cannot process patches larger than ```512x512x3``` as the input at a time.
 * One may resize the input images into more practical size. However we should not expect to train our model reasonably well using a single image and its associated labels image.
 
 As illustrated in ```Figure 2```, the input image and its associated labels image are partitioned into a ```20x20``` grid of ```slightly-overlapping``` sub-images:
