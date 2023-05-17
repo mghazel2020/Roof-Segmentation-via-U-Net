@@ -42,7 +42,7 @@ My implemented solutions can be outlined as follows:
 
 Next, we shall describe each of these steps in more details and illutrate sample results.
 
-## 4.1. Image Partitioning
+## 3.1. Image Partitioning
 
 There are several valid reasons for partitioning the provided input data and its associated labels image, including:
 * The input areal image and its labels image, with spatial resolution: ```5000x5000``` pixels, are too large to use. 
@@ -75,7 +75,7 @@ As illustrated in ```Figure 2```, the input image and its associated labels imag
 
 </div>
 
-## 4.2. Data Augmentation
+## 3.2. Data Augmentation
 
 After partitioning the input image and its associated labels image, we obtain 1600 sub-images of size ```256x256`` pixels, which can be used to train and validate the CNN model:
 * The generated labelled data may not be sufficiently diverse and additional labelled data would benefit training the CNN model
@@ -107,7 +107,7 @@ After partitioning the input image and its associated labels image, we obtain 16
   <em>Figure 3: A partition sub-image, its associated labels sub-image and their horizontal, vertical and horizonal and vertical flip transformations.</em>
 </p>
 
-## 4.3. Model Training & Validation Data Split
+## 3.3. Model Training & Validation Data Split
 
 I split the 400 partitioned sub-images and their associated labels sub-images into training and validation sub-sets as illustrated in ```Table 2```:
 * Ideally we should split the available labelled data into 3 subsets:
@@ -132,7 +132,7 @@ I split the 400 partitioned sub-images and their associated labels sub-images in
 
 </div>
 
-## 4.4. Model: U-Net
+## 3.4. Model: U-Net
 
 The undertaken problem of roof-top detection and segmentation from areal imagery is a classifical image segmentation problem:
 
@@ -178,7 +178,7 @@ We experimented with various model training hyper-parameters and the set values 
   <em>Figure 5: The variations of the accuracy and loss in terms of the number of training epochs, for the training and validation images.</em>
 </p>
 
-## 4.5. Trained Model Performance Evaluation
+## 3.5. Trained Model Performance Evaluation
 
 We evaluated the performance of the trained model on the test data subsets:
 * ```Figure 6```illustrates the normalized confusion matrix.
@@ -203,7 +203,7 @@ We evaluated the performance of the trained model on the test data subsets:
   <em>Figure 7: Ten randomly selected test images and their corresponding labels and model predictions.</em>
 </p>
 
-## 4.6. Generating Model Labels Predictions for the Full Original Input image
+## 3.6. Generating Model Labels Predictions for the Full Original Input image
 
 Finally, we merged the trained model predictions obtained from the partitioned sub-images together to generate the model labels predictions for the entire original input image (```image.tif```). ```Figure 8``` illustrates the generated model labels predictions for the entire input image and the ground truth labels image (```labels.tif```).
 
@@ -217,7 +217,7 @@ Finally, we merged the trained model predictions obtained from the partitioned s
   <em>Figure 8: The generated model labels predictions for the entire input image and the ground truth labels image.</em>
 </p>
 
-## 4.7. Evaluating the Trained Model Performance on the Full Input Image
+## 3.7. Evaluating the Trained Model Performance on the Full Input Image
 
 The performance evaluation of the trained model on the full input image is illustrated in ```Figure 9```. 
 
@@ -231,9 +231,9 @@ The performance evaluation of the trained model on the full input image is illus
   <em>Figure -: The normalized confusion matrix and the classification report using the full input image.</em>
 </p>
 
-# 5. Submitted Code
+# 4. Submitted Code
 
-## 5.1 Folder Structure
+## 4.1 Folder Structure
 
 The folder structure of the submitted software implmentations is as illustrated in ```Figure 10```:
 * The ```code``` sub-folder contains the required files for training and deploying the CNN model:
@@ -269,7 +269,7 @@ The folder structure of the submitted software implmentations is as illustrated 
   <em>Figure 10: The folder structure of the submitted software implementations.</em>
 </p>
 
-## 5.2 Requirements
+## 4.2 Requirements
 
 The content of the ```requirements.txt``` file is as follows: 
 
@@ -283,7 +283,7 @@ sklearn~=0.0.post1
 scikit-learn~=1.2.2
 ```
 
-## 5.3 Executing the Code (```train.py``` and ```inference.py```)
+## 4.3 Executing the Code (```train.py``` and ```inference.py```)
 
 Suppose my submitted solutions folder (```CV_Exercise_MGhazel_Solutions```) is copied to your ```C-Drive```:
 
@@ -578,9 +578,9 @@ Model Deployed Successfully on: 2023-03-25 14:18:30, Good-bye!
   * Using different hyper-parameters.
 
 
-# 6. Assessment & Proposed Improvements
+# 5. Assessment & Proposed Improvements
 
-## 6.1 Performance Assessment
+## 5.1 Performance Assessment
 
 In view of the presented prediction results, we make the following observations:
 * Based on its performance on the full image, as illustrated in ```Figure 11```, the trained model achieved:
@@ -592,9 +592,9 @@ In view of the presented prediction results, we make the following observations:
     - Flat smooth or paved ground surfaces and terrains
     - Others.
     
-## 6.2 Proposed Improvements
+## 5.2 Proposed Improvements
 
-## 6.2.1 Collecting and Labelling More Diverse Data
+## 5.2.1 Collecting and Labelling More Diverse Data
 In view of the model performance assessment above, it appears that one of the main drawbacks of the trained model lies in its high false-positive detection rate:
   - Thus, the model may benefit from collecting and annotating more diverse training data
   - Additional labelled data should especially contain more examples similar to the observed model false positive detections, including surfaces similar to roof tops, such as tops of large vehicles and metal structures, flat smooth or paved ground surfaces and terrains, etc. 
@@ -604,7 +604,7 @@ In view of the model performance assessment above, it appears that one of the ma
     - Connected components analysis.
 
 
-## 6.2.2 Hyper-Parameters Tuning & Data Augmentation
+## 5.2.2 Hyper-Parameters Tuning & Data Augmentation
 
 As mentioned previously, I experimented with tuning few key model training hyper-paramaters, such as the number of epochs and the batch size:
   - A more comprehensive hyper-parameter fine-tuning using grid-seach or random search algorithms is recommended. 
@@ -614,7 +614,7 @@ As mentioned previously, I experimented with tuning few key model training hyper
     - Pixel-based transformations
     - Such data augmentation should increase the volume and diversity of the training data and imrove the model training, learning and generalization. 
 
-## 6.2.4 Proposed Improvements to the Implemented Code
+## 5.2.4 Proposed Improvements to the Implemented Code
 
 For this task, I aimed to develop a efficient, modularized and well documented code. However, additional improvements can be made to further improve my implementations, including:
 
