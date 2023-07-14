@@ -1,6 +1,3 @@
-# Computer Vision Exercise:
-* Candidate: Mohsen Ghazel
-* Date: May 17, 2023
 
 # 1. Objective
 
