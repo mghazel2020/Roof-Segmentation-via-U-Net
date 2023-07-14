@@ -1,3 +1,7 @@
+# Machine Learning & Computer Vision Exercise:
+* Candidate: Mohsen Ghazel
+* Date: May 17, 2023
+
 # Roof-Top Detection via U-Net Segmentation Model
 
 # 1. Objective
